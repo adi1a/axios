@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import PostsView from "../views/PostsView.vue";
 
 Vue.use(VueRouter);
 
@@ -11,9 +12,20 @@ const routes: Array<RouteConfig> = [
     component: HomeView,
   },
   {
-    path: "/posts/:id",
+    path: "/posts",
     name: "posts",
-    component: () => import("@/views/PostsView.vue"),
+    component: PostsView,
+  },
+
+  {
+    path: "/posts/:id",
+    name: "postPage",
+    component: () => import("@/views/PostPageView.vue"),
+  },
+  {
+    path: "/cart",
+    name: "cart",
+    component: () => import("@/views/CartView.vue"),
   },
 ];
 

@@ -1,9 +1,10 @@
 <template>
   <div class="post">
-    <h3 class="post-title">
-      {{ post.title }}
+    <h3 class="post-title" @click="routeToPost(post.id)">
+      {{ post.id }}: {{ post.title }}
     </h3>
     <p class="" post-body>{{ post.body }}</p>
+    <button @click="$emit('action')">addToCart</button>
   </div>
 </template>
 
@@ -17,7 +18,11 @@ import { Component, Vue } from "vue-property-decorator";
     },
   },
 })
-export default class PostCardComponent extends Vue {}
+export default class PostCardComponent extends Vue {
+  routeToPost(postId: string | number) {
+    this.$router.push({ name: "postPage", params: { id: postId.toString() } });
+  }
+}
 </script>
 
 <style scoped lang="scss">
